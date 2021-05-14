@@ -3,3 +3,7 @@
 # Created using React-Native, and the libraries will be listed here as the development goes.
 
     ∙ React-Native-Paper
+
+# Deployment
+
+# Plans
