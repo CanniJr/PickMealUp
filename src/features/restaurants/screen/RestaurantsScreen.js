@@ -4,7 +4,7 @@ import { StatusBar, View, SafeAreaView } from "react-native";
 import { Searchbar } from "react-native-paper";
 import RestaurantInfoCard from "../components/RestaurantInfoCard";
 
-const RestaurantScreen = () => {
+const RestaurantsScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const onChangeSearch = (query) => setSearchQuery(query);
@@ -25,7 +25,7 @@ const RestaurantScreen = () => {
   );
 };
 
-export default RestaurantScreen;
+export default RestaurantsScreen;
 
 const SafeArea = styled.SafeAreaView`
   flex: 1;
