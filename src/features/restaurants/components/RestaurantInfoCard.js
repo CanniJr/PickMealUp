@@ -29,7 +29,7 @@ export default RestaurantInfoCard;
 
 //----Styled Components----//
 const Title = styled.Text`
-  padding: 16px;
+  padding: ${(props) => props.theme.sizes.md};
   color: ${(props) => props.theme.colors.ui.primary};
   font-weight: bold;
 `;

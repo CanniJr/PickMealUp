@@ -1,1 +1,7 @@
-export const sizes = ["8px", "16px", "32px", "64px", "128px"];
+export const sizes = {
+  sm: "8px",
+  md: "16px",
+  lg: "32px",
+  xl: "64px",
+  xxl: "128px",
+};
