@@ -33,11 +33,11 @@ const SafeArea = styled.SafeAreaView`
 `;
 
 const SearchContainer = styled.View`
-  padding: 15px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 const ListContainer = styled.View`
-  padding: 15px;
+  padding: ${(props) => props.theme.space[3]};
   flex: 1;
-  background-color: blue;
+  background-color: ${(props) => props.theme.colors.bg.secondary};
 `;

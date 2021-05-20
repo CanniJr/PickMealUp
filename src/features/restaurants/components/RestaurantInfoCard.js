@@ -35,10 +35,10 @@ const Title = styled.Text`
 `;
 
 const RestaurantCard = styled(Card)`
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.ui.tertiary};
 `;
 
 const RestaurantCardCover = styled(Card.Cover)`
-  padding: 20px;
-  background-color: white;
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.ui.quaternary};
 `;
