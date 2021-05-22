@@ -29,9 +29,9 @@ export default RestaurantInfoCard;
 
 //----Styled Components----//
 const Title = styled.Text`
+  font-family: ${(props) => props.theme.fonts.body};
   padding: ${(props) => props.theme.sizes.md};
   color: ${(props) => props.theme.colors.ui.primary};
-  font-weight: bold;
 `;
 
 const RestaurantCard = styled(Card)`
