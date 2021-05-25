@@ -39,5 +39,5 @@ const SearchContainer = styled.View`
 const ListContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
   flex: 1;
-  background-color: ${(props) => props.theme.colors.bg.secondary};
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;

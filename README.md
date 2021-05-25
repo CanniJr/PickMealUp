@@ -9,3 +9,5 @@ PickMealUp is a mobile app that uses Google Maps API to search for restaurants i
 ## Created using React-Native, and the libraries will be listed here as the development goes.
 
     ∙ React-Native-Paper
+    ∙ React-Native-SVG
+    ∙ Expo-Google-Fonts
