@@ -45,11 +45,7 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
             ))}
           </Ratings>
           <SectionEnd>
-            {isClosedTemporarily && (
-              <Text variant="label" style={{ color: "red" }}>
-                CLOSED TEMP
-              </Text>
-            )}
+            {isClosedTemporarily && <Text variant="error">CLOSED TEMP</Text>}
             <Spacer position="left" size="medium">
               {isOpen ? <SvgXml xml={open} width={20} height={20} /> : null}
             </Spacer>
