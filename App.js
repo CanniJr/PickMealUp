@@ -13,6 +13,7 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -40,8 +41,29 @@ export default function App() {
 
   const Tab = createBottomTabNavigator();
 
+  const TAB_ICON = {
+    Restaurant: "restaurant",
+    Map: "map",
+    Settings: "settings",
+  };
+
+  const createScreenOptions = ({ route }) => {
+    const iconName = TAB_ICON[route.name];
+    return {
+      tabBarIcon: ({ size, color }) => (
+        <Ionicons name={iconName} size={size} color={color} />
+      ),
+    };
+  };
+
   const MyTabs = () => (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={createScreenOptions}
+      tabBarOptions={{
+        activeTintColor: "tomato",
+        inactiveTintColor: "gray",
+      }}
+    >
       <Tab.Screen name="Restaurant" component={RestaurantsScreen} />
       <Tab.Screen name="Map" component={MapScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
