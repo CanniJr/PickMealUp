@@ -7,8 +7,6 @@ import { SafeArea } from "../../../components/utility/safeArea.component";
 
 import { Spacer } from "../../../components/spacer/spacerComponent";
 
-const DATA = [{ id: "blabla" }];
-
 const RestaurantsScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
