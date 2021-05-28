@@ -1,4 +1,5 @@
 import { mocks } from "./mock";
+import camelize from "camelize";
 
 export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
   return new Promise((resolve, reject) => {
@@ -9,10 +10,15 @@ export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
     resolve(mock);
   });
 };
-restaurantsRequest()
-  .then((resp) => {
-    console.log(resp);
-  })
-  .catch((err) => {
-    console.log(err);
+
+const requestTransform = ({ results = [] }) => {
+  const mappedResults = results.map((restaurant) => {
+    return {
+      ...restaurant,
+      isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
+      isOpen: restaurant.opening_hours && restaurant.opening_hours.open_now,
+    };
   });
+
+  return camelize(mappedResults);
+};
