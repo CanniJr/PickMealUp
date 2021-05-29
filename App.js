@@ -5,6 +5,7 @@ import { SafeArea } from "./src/components/utility/safeArea.component";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme";
 import RestaurantsScreen from "./src/features/restaurants/screen/RestaurantsScreen";
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -73,9 +74,11 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <MyTabs />
-        </NavigationContainer>
+        <RestaurantsContextProvider>
+          <NavigationContainer>
+            <MyTabs />
+          </NavigationContainer>
+        </RestaurantsContextProvider>
       </ThemeProvider>
       <ExpoStatsBar style="auto" />
     </>
