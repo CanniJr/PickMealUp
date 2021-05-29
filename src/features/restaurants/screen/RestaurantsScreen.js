@@ -3,7 +3,7 @@ import { RestaurantsContext } from "../../../services/restaurants/restaurants.co
 
 import styled from "styled-components/native";
 import { FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
+import { Searchbar, ActivityIndicator, Colors } from "react-native-paper";
 import RestaurantInfoCard from "../components/RestaurantInfoCard";
 import { SafeArea } from "../../../components/utility/safeArea.component";
 
@@ -24,17 +24,21 @@ const RestaurantsScreen = () => {
           value={searchQuery}
         />
       </SearchContainer>
-      <RestaurantList
-        data={restaurants}
-        renderItem={({ item }) => (
-          <>
-            <Spacer position="bottom" size="large">
-              <RestaurantInfoCard restaurant={item} />
-            </Spacer>
-          </>
-        )}
-        keyExtractor={(item) => item.name}
-      />
+      {isLoading ? (
+        <ActivityIndicator animating={true} color={Colors.blue300} size={100} />
+      ) : (
+        <RestaurantList
+          data={restaurants}
+          renderItem={({ item }) => (
+            <>
+              <Spacer position="bottom" size="large">
+                <RestaurantInfoCard restaurant={item} />
+              </Spacer>
+            </>
+          )}
+          keyExtractor={(item) => item.name}
+        />
+      )}
     </SafeArea>
   );
 };

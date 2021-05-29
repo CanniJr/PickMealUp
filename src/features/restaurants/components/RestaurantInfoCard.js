@@ -17,7 +17,7 @@ import {
   Icon,
 } from "./RestaurantInfoCard.style";
 
-const RestaurantInfoCard = ({ restaurant = {} }) => {
+const RestaurantInfoCard = ({ restaurant }) => {
   //default values for testing
   const {
     name = "Some Restaurant",
