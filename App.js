@@ -6,6 +6,8 @@ import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme";
 import RestaurantsScreen from "./src/features/restaurants/screen/RestaurantsScreen";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
+
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -74,11 +76,13 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantsContextProvider>
-          <NavigationContainer>
-            <MyTabs />
-          </NavigationContainer>
-        </RestaurantsContextProvider>
+        <LocationContextProvider>
+          <RestaurantsContextProvider>
+            <NavigationContainer>
+              <MyTabs />
+            </NavigationContainer>
+          </RestaurantsContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
       <ExpoStatsBar style="auto" />
     </>

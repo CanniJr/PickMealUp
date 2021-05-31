@@ -1,9 +1,9 @@
 import camelize from "camelize";
 import { locations } from "./location.mock";
 
-export const locationReqeust = (searchVal) => {
+export const locationRequest = (searchTerm) => {
   return new Promise((resolve, reject) => {
-    const locationMock = locations[searchVal];
+    const locationMock = locations[searchTerm];
     if (!locationMock) {
       reject("not found");
     }
@@ -11,9 +11,9 @@ export const locationReqeust = (searchVal) => {
   });
 };
 
-export const locationTransform = (result) => {
+export const requestTransform = (result) => {
   const formattedResponse = camelize(result);
-  const { geometry } = formattedResponse.results[0];
+  const { geometry = {} } = formattedResponse.results[0];
   const { lat, lng } = geometry.location;
 
   return { lat, lng };
