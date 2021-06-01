@@ -10,7 +10,7 @@ export const Search = () => {
 
   return (
     <SearchContainer>
-      <Searchbar placeholder="Search location" />
+      <Searchbar placeholder="Search location" value={} />
     </SearchContainer>
   );
 };
