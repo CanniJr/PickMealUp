@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/native";
 import { Searchbar } from "react-native-paper";
 
+import { LocationContext } from "../../../services/location/location.context";
+
 export const Search = () => {
+  const locationContext = useContext(LocationContext);
+  console.log(locationContext);
+
   return (
     <SearchContainer>
-      <Searchbar />
+      <Searchbar placeholder="Search location" />
     </SearchContainer>
   );
 };
