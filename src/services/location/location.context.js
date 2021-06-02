@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 
 import { locationRequest, requestTransform } from "./location.service";
 
@@ -16,11 +16,16 @@ export const LocationContextProvider = ({ children }) => {
     setIsLoading(true);
     setKeyword(searchVal);
     console.log(searchVal)
-    if(!searchVal.length){
+ 
+  };
+
+  useEffect(() => {
+    if(!keyword.length){
       // Checks if value is empty and do nothing, so we don't make unecessary empty API call.
       return;
     }
-    locationRequest(searchVal.toLowerCase())
+    
+    locationRequest(keyword.toLowerCase())
       .then(requestTransform)
       .then((result) => {
         setIsLoading(false);
@@ -31,7 +36,8 @@ export const LocationContextProvider = ({ children }) => {
         setError(err);
         setIsLoading(false);
       });
-  };
+
+  }, [keyword])
 
   return (
     <LocationContext.Provider

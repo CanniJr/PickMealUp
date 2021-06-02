@@ -14,6 +14,7 @@ export const RestaurantsContextProvider = ({ children }) => {
 
   const retrieveRestaurants = (locationValue) => {  // locationValue comes from useEffect, which re-rendered after location change
     setIsLoading(true);
+    setRestaurants([])
 
     setTimeout(() => {
       restaurantsRequest(locationValue)

@@ -25,10 +25,11 @@ const RestaurantInfoCard = ({ restaurant }) => {
     photos = [
       "https://cdn-cajkg.nitrocdn.com/ZJzLelPaQQUYcIzKvveTxTAioLgFVwpU/assets/static/optimized/rev-cd29551/wp-content/uploads/2019/04/mae-mu-pancakes-819x1024.jpg.webp",
     ],
-    address = "999 Somewhere Street",
+    vicinity = "999 Somewhere Street",
     rating = 4,
     isOpen = true,
     isClosedTemporarily = true,
+    placeId
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -40,8 +41,8 @@ const RestaurantInfoCard = ({ restaurant }) => {
         <Text>{name}</Text>
         <Section>
           <Ratings>
-            {ratingArray.map(() => (
-              <SvgXml xml={star} width={20} height={20} />
+            {ratingArray.map((_, i) => ( // using the index as part of the key to make a unique key for each component.
+              <SvgXml key={`star-${placeId}-${i}`} xml={star} width={20} height={20} />
             ))}
           </Ratings>
           <SectionEnd>
@@ -54,7 +55,7 @@ const RestaurantInfoCard = ({ restaurant }) => {
             </Spacer>
           </SectionEnd>
         </Section>
-        <Address>{address}</Address>
+        <Address>{vicinity}</Address>
       </Info>
     </RestaurantCard>
   );
