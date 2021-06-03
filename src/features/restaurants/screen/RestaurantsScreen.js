@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
 import styled from "styled-components/native";
-import { FlatList } from "react-native";
+import { FlatList, Pressable } from "react-native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 import RestaurantInfoCard from "../components/RestaurantInfoCard";
 import { SafeArea } from "../../../components/utility/safeArea.component";
@@ -10,8 +10,9 @@ import { SafeArea } from "../../../components/utility/safeArea.component";
 import { Spacer } from "../../../components/spacer/spacerComponent";
 import { Search } from "../components/Search";
 
-const RestaurantsScreen = () => {
-  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+const RestaurantsScreen = ({ navigation }) => {
+  const { restaurants, isLoading } = useContext(RestaurantsContext);
+  console.log(navigation);
 
   return (
     <SafeArea>
@@ -19,17 +20,25 @@ const RestaurantsScreen = () => {
       {isLoading ? (
         <ActivityIndicator animating={true} color={Colors.blue300} size={100} />
       ) : (
-        <RestaurantList
-          data={restaurants}
-          renderItem={({ item }) => (
-            <>
-              <Spacer position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
-              </Spacer>
-            </>
+        <>
+          {!restaurants ? null : (
+            <RestaurantList
+              data={restaurants}
+              renderItem={({ item }) => (
+                <>
+                  <Pressable
+                    onPress={() => navigation.navigate("Restaurant Detail")}
+                  >
+                    <Spacer position="bottom" size="large">
+                      <RestaurantInfoCard restaurant={item} />
+                    </Spacer>
+                  </Pressable>
+                </>
+              )}
+              keyExtractor={(item) => item.name}
+            />
           )}
-          keyExtractor={(item) => item.name}
-        />
+        </>
       )}
     </SafeArea>
   );

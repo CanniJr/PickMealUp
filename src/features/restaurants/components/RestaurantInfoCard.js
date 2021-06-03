@@ -29,7 +29,7 @@ const RestaurantInfoCard = ({ restaurant }) => {
     rating = 4,
     isOpen = true,
     isClosedTemporarily = true,
-    placeId
+    placeId,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -41,9 +41,19 @@ const RestaurantInfoCard = ({ restaurant }) => {
         <Text>{name}</Text>
         <Section>
           <Ratings>
-            {ratingArray.map((_, i) => ( // using the index as part of the key to make a unique key for each component.
-              <SvgXml key={`star-${placeId}-${i}`} xml={star} width={20} height={20} />
-            ))}
+            {ratingArray.map(
+              (
+                _,
+                i // using the index as part of the key to make a unique key for each component.
+              ) => (
+                <SvgXml
+                  key={`star-${placeId}-${i}`}
+                  xml={star}
+                  width={20}
+                  height={20}
+                />
+              )
+            )}
           </Ratings>
           <SectionEnd>
             {isClosedTemporarily && <Text variant="error">CLOSED TEMP</Text>}
