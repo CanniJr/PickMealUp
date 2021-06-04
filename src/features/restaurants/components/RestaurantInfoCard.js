@@ -5,6 +5,7 @@ import { Text } from "../../../components/typography/textComponent";
 import { Spacer } from "../../../components/spacer/spacerComponent";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
+import pricetag from "../../../../assets/pricetag";
 
 import {
   Address,
@@ -14,10 +15,11 @@ import {
   Section,
   SectionEnd,
   Ratings,
+  Price,
   Icon,
 } from "./RestaurantInfoCard.style";
 
-const RestaurantInfoCard = ({ restaurant }) => {
+const RestaurantInfoCard = ({ restaurant, type }) => {
   //default values for testing
   const {
     name = "Some Restaurant",
@@ -30,15 +32,36 @@ const RestaurantInfoCard = ({ restaurant }) => {
     isOpen = true,
     isClosedTemporarily = true,
     placeId,
+    priceLevel,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
+  const priceArray = Array.from(new Array(Math.floor(priceLevel)));
 
   return (
     <RestaurantCard elevation={10}>
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
-        <Text>{name}</Text>
+        <Section>
+          <Text>{name}</Text>
+          {type === "detail" ? (
+            <Price>
+              {priceArray.map(
+                (
+                  _,
+                  i // using the index as part of the key to make a unique key for each component.
+                ) => (
+                  <SvgXml
+                    key={`star-${placeId}-${i}`}
+                    xml={pricetag}
+                    width={15}
+                    height={20}
+                  />
+                )
+              )}
+            </Price>
+          ) : null}
+        </Section>
         <Section>
           <Ratings>
             {ratingArray.map(

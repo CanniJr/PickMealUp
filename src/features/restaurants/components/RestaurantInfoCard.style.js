@@ -30,6 +30,13 @@ export const Ratings = styled.View`
   padding-bottom: ${(props) => props.theme.space[2]};
 `;
 
+export const Price = styled.View`
+  flex-direction: row;
+  padding-top: ${(props) => props.theme.space[2]};
+  padding-bottom: ${(props) => props.theme.space[2]};
+  padding-left: ${(props) => props.theme.space[2]};
+`;
+
 export const Section = styled.View`
   flex-direction: row;
   align-items: center;

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
 import styled from "styled-components/native";
-import { FlatList, Pressable, TouchableOpacity } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 import RestaurantInfoCard from "../components/RestaurantInfoCard";
 import { SafeArea } from "../../../components/utility/safeArea.component";
@@ -27,7 +27,9 @@ const RestaurantsScreen = ({ navigation }) => {
                 <>
                   <TouchableOpacity
                     onPress={() =>
-                      navigation.navigate("Restaurant Detail", item)
+                      navigation.navigate("Restaurant Detail", {
+                        restaurant: item,
+                      })
                     }
                   >
                     <Spacer position="bottom" size="large">
