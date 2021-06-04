@@ -5,7 +5,7 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 import RestaurantsScreen from "../../features/restaurants/screen/RestaurantsScreen";
-import { RestaurantDetails } from "../../features/restaurants/screen/RestaurantDetails";
+import { RestaurantDetailsScreen } from "../../features/restaurants/screen/RestaurantDetailsScreen";
 
 const RestaurantStack = createStackNavigator();
 
@@ -24,7 +24,7 @@ const RestaurantsNavigator = () => {
       />
       <RestaurantStack.Screen
         name="Restaurant Detail"
-        component={RestaurantDetails}
+        component={RestaurantDetailsScreen}
       />
     </RestaurantStack.Navigator>
   );
