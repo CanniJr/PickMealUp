@@ -1,4 +1,5 @@
 import React from "react";
+import { List } from "react-native-paper";
 import { SafeArea } from "../../../components/utility/safeArea.component";
 import RestaurantInfoCard from "../components/RestaurantInfoCard";
 
