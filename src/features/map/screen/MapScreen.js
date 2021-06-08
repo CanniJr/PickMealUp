@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import MapView from "react-native-maps";
 import styled from "styled-components";
+import { LocationContext } from "../../../services/location/location.context";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { MapSearch } from "../components/MapSearch";
 
 export const MapScreen = () => {
+  const { location } = useContext(LocationContext);
+  const { restaurants } = useContext(RestaurantsContext);
+
   return (
     <>
       <MapSearch />
-      <Map />
+      <Map>
+        {restaurants.map((restaurant) => {
+          return null;
+        })}
+      </Map>
     </>
   );
 };
