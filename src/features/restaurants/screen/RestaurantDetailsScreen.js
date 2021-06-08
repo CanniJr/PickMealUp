@@ -15,7 +15,7 @@ export const RestaurantDetailsScreen = ({ route }) => {
 
   return (
     <SafeArea>
-      <RestaurantInfoCard restaurant={restaurant} type="detail" />
+      <RestaurantInfoCard restaurant={restaurant} />
       <ScrollView>
         <List.Section title="Menus">
           <List.Accordion

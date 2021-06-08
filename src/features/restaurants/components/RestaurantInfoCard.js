@@ -32,36 +32,15 @@ const RestaurantInfoCard = ({ restaurant, type }) => {
     isOpen = true,
     isClosedTemporarily = true,
     placeId,
-    priceLevel,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
-  const priceArray = Array.from(new Array(Math.floor(priceLevel)));
 
   return (
     <RestaurantCard elevation={10}>
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
-        <Section>
-          <Text>{name}</Text>
-          {type === "detail" ? (
-            <Price>
-              {priceArray.map(
-                (
-                  _,
-                  i // using the index as part of the key to make a unique key for each component.
-                ) => (
-                  <SvgXml
-                    key={`star-${placeId}-${i}`}
-                    xml={pricetag}
-                    width={15}
-                    height={20}
-                  />
-                )
-              )}
-            </Price>
-          ) : null}
-        </Section>
+        <Text>{name}</Text>
         <Section>
           <Ratings>
             {ratingArray.map(
