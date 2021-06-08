@@ -11,6 +11,7 @@ The plan is to connect to Google maps API and make suggestions based of the API 
 
     ∙ React-Native-Paper
     ∙ React-Native-SVG
+    ∙ React-Native-Maps
     ∙ Expo-Google-Fonts
     ∙ React Navigation and gesture handlers
     ∙ React Navigation stack

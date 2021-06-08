@@ -5,12 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import RestaurantsNavigator from "./restaurants.navigator";
-
-const MapScreen = () => (
-  <SafeArea>
-    <Text>Map</Text>
-  </SafeArea>
-);
+import { MapScreen } from "../../features/map/MapScreen";
 
 const SettingsScreen = () => (
   <SafeArea>
