@@ -5,7 +5,6 @@ import { Text } from "../../../components/typography/textComponent";
 import { Spacer } from "../../../components/spacer/spacerComponent";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-import pricetag from "../../../../assets/pricetag";
 
 import {
   Address,
@@ -15,7 +14,6 @@ import {
   Section,
   SectionEnd,
   Ratings,
-  Price,
   Icon,
 } from "./RestaurantInfoCard.style";
 
