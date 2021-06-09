@@ -3,6 +3,7 @@ import MapView from "react-native-maps";
 import styled from "styled-components";
 import { LocationContext } from "../../../services/location/location.context";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { MapCallout } from "../components/MapCallout";
 import { MapSearch } from "../components/MapSearch";
 
 export const MapScreen = () => {
@@ -40,7 +41,11 @@ export const MapScreen = () => {
                 latitude: restaurant.geometry.location.lat,
                 longitude: restaurant.geometry.location.lng,
               }}
-            />
+            >
+              <Callout>
+                <MapCallout restaurant={restaurant} />
+              </Callout>
+            </MapView.Marker>
           );
         })}
       </Map>
@@ -52,3 +57,5 @@ const Map = styled(MapView)`
   height: 100%;
   width: 100%;
 `;
+
+const Callout = styled(MapView.Callout)``;
