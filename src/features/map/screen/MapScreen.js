@@ -6,10 +6,9 @@ import { RestaurantsContext } from "../../../services/restaurants/restaurants.co
 import { MapCallout } from "../components/MapCallout";
 import { MapSearch } from "../components/MapSearch";
 
-export const MapScreen = () => {
+export const MapScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { restaurants } = useContext(RestaurantsContext);
-  // console.log(location)
   const { lat, lng, viewport } = location;
 
   const [latDelta, setLatDelta] = useState(0); // determines the zoom level on render
@@ -42,7 +41,11 @@ export const MapScreen = () => {
                 longitude: restaurant.geometry.location.lng,
               }}
             >
-              <Callout>
+              <Callout
+                onPress={() =>
+                  navigation.navigate("Restaurant Detail", { restaurant })
+                }
+              >
                 <MapCallout restaurant={restaurant} />
               </Callout>
             </MapView.Marker>

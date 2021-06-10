@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
 
 import styled from "styled-components/native";
 import { FlatList, TouchableOpacity } from "react-native";
@@ -12,6 +13,9 @@ import { Search } from "../components/Search";
 
 const RestaurantsScreen = ({ navigation }) => {
   const { restaurants, isLoading } = useContext(RestaurantsContext);
+  const { favourites } = useContext(FavouritesContext);
+
+  console.log(favourites);
 
   return (
     <SafeArea>

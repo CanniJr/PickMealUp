@@ -1,8 +1,8 @@
 import React from "react";
 import { SvgXml } from "react-native-svg";
-
 import { Text } from "../../../components/typography/textComponent";
 import { Spacer } from "../../../components/spacer/spacerComponent";
+import { Favourite } from "../../../components/favourites/favouritesComponent";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 
@@ -17,7 +17,7 @@ import {
   Icon,
 } from "./RestaurantInfoCard.style";
 
-const RestaurantInfoCard = ({ restaurant, type }) => {
+const RestaurantInfoCard = ({ restaurant }) => {
   //default values for testing
   const {
     name = "Some Restaurant",
@@ -36,6 +36,7 @@ const RestaurantInfoCard = ({ restaurant, type }) => {
 
   return (
     <RestaurantCard elevation={10}>
+      <Favourite restaurant={restaurant} />
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
         <Text>{name}</Text>
