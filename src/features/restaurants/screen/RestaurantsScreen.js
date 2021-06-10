@@ -10,7 +10,7 @@ import { SafeArea } from "../../../components/utility/safeArea.component";
 import { FavouritesBar } from "../../../components/favourites/favouritesBar";
 
 import { Spacer } from "../../../components/spacer/spacerComponent";
-import { Search } from "../components/Search";
+import { RestaurantSearch } from "../components/RestaurantSearch";
 
 const RestaurantsScreen = ({ navigation }) => {
   const { restaurants, isLoading } = useContext(RestaurantsContext);
@@ -18,15 +18,16 @@ const RestaurantsScreen = ({ navigation }) => {
 
   const [isToggled, setIsToggled] = useState(false);
 
-  console.log(favourites);
-
   return (
     <SafeArea>
-      <Search
+      <RestaurantSearch
         isFavouritesToggled={isToggled}
         onFavouritesToggle={() => setIsToggled(!isToggled)}
       />
-      {isToggled && <FavouritesBar />}
+      {/* Favourites Bar */}
+      {isToggled && (
+        <FavouritesBar navigation={navigation} favourites={favourites} />
+      )}
       {isLoading ? (
         <ActivityIndicator animating={true} color={Colors.blue300} size={100} />
       ) : (

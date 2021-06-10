@@ -4,7 +4,10 @@ import { Searchbar } from "react-native-paper";
 
 import { LocationContext } from "../../../services/location/location.context";
 
-export const Search = ({ isFavouritesToggled, onFavouritesToggle }) => {
+export const RestaurantSearch = ({
+  isFavouritesToggled,
+  onFavouritesToggle,
+}) => {
   const { keyword, search } = useContext(LocationContext);
   const [searchValue, setSearchValue] = useState(keyword);
 
@@ -16,7 +19,7 @@ export const Search = ({ isFavouritesToggled, onFavouritesToggle }) => {
     <SearchContainer>
       <Searchbar
         icon={isFavouritesToggled ? "star" : "star-outline"}
-        iconColor="red"
+        iconColor={isFavouritesToggled ? "red" : "gray"}
         onIconPress={onFavouritesToggle}
         placeholder="Search location"
         value={searchValue}

@@ -1,9 +1,30 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const FavouritesContext = createContext();
 
 export const FavouritesContextProvider = ({ children }) => {
   const [favourites, setFavourites] = useState([]);
+
+  const saveFavourites = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem("@favourites", jsonValue);
+    } catch (e) {
+      console.log("Error in saving ", e);
+    }
+  };
+
+  const loadFavourites = async () => {
+    try {
+      const value = await AsyncStorage.getItem("@favourites");
+      if (value !== null) {
+        setFavourites(JSON.parse(value));
+      }
+    } catch (e) {
+      console.log("Error in loading", e);
+    }
+  };
 
   const add = (restaurant) => {
     setFavourites([...favourites, restaurant]);
@@ -11,16 +32,31 @@ export const FavouritesContextProvider = ({ children }) => {
 
   const remove = (restaurant) => {
     const newFavourites = favourites.filter(
-      (fav) => fav.placeId !== restaurant.placeId
+      (x) => x.placeId !== restaurant.placeId
     );
 
     setFavourites(newFavourites);
   };
 
+  const deleteAll = () => {
+    setFavourites([]);
+  };
+
+  // Gets the favourites in async storage on render
+  useEffect(() => {
+    loadFavourites();
+  }, []);
+
+  // To persist in async storage when saving to favourites
+  useEffect(() => {
+    saveFavourites(favourites);
+  }, [favourites]);
+
   return (
     <FavouritesContext.Provider
       value={{
         favourites,
+        deleteAll: deleteAll,
         addToFavourites: add,
         removeFromFavourites: remove,
       }}
