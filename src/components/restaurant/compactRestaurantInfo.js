@@ -6,8 +6,8 @@ import { Platform } from "react-native";
 import { Text } from "../typography/textComponent";
 
 const isAndroid = Platform.OS === "android";
-export const CompactRestaurantInfo = ({ restaurant }) => {
-  const Image = isAndroid ? CompactWebView : CompactImage;
+export const CompactRestaurantInfo = ({ restaurant, isMap }) => {
+  const Image = isAndroid && isMap ? CompactWebView : CompactImage;
   // To compensate for Android OS not rendering MapView Callout, render a webpage instead for the popup
 
   return (
