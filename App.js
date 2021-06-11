@@ -1,11 +1,12 @@
 import { StatusBar as ExpoStatsBar } from "expo-status-bar";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
-import { MyTabs } from "./src/infrastructure/navigation/app.navigator";
+import { AuthContextProvider } from "./src/services/authentication/auth.context";
+import { Navigation } from "./src/infrastructure/navigation";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -28,21 +29,6 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword("testman@mail.com", "test123")
-      .then((user) => {
-        console.log(user);
-        setIsAuthenticated(true);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
-
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
   });
@@ -57,13 +43,15 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <FavouritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantsContextProvider>
-              <MyTabs />
-            </RestaurantsContextProvider>
-          </LocationContextProvider>
-        </FavouritesContextProvider>
+        <AuthContextProvider>
+          <FavouritesContextProvider>
+            <LocationContextProvider>
+              <RestaurantsContextProvider>
+                <Navigation />
+              </RestaurantsContextProvider>
+            </LocationContextProvider>
+          </FavouritesContextProvider>
+        </AuthContextProvider>
       </ThemeProvider>
       <ExpoStatsBar style="auto" />
     </>

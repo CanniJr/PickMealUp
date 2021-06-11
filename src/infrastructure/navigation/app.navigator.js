@@ -30,7 +30,7 @@ const createScreenOptions = ({ route }) => {
   };
 };
 
-export const MyTabs = () => (
+export const AppNavigator = () => (
   <NavigationContainer>
     <Tab.Navigator
       screenOptions={createScreenOptions}
