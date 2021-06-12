@@ -1,14 +1,17 @@
-import React, { useContext, useState } from "react";
-import { Text } from "../../components/typography/textComponent";
+import React, { useContext } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+
 import { AppNavigator } from "./app.navigator";
+import { AccountNavigator } from "./account.navigator";
+
 import { AuthContext } from "../../services/authentication/auth.context";
 
 export const Navigation = () => {
   const { isAuthenticated } = useContext(AuthContext);
 
-  return isAuthenticated ? (
-    <AppNavigator />
-  ) : (
-    <Text>You're not logged in! 🙃</Text>
+  return (
+    <NavigationContainer>
+      {isAuthenticated ? <AppNavigator /> : <AccountNavigator />}
+    </NavigationContainer>
   );
 };
