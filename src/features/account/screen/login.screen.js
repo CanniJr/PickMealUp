@@ -1,31 +1,34 @@
 import React, { useState, useContext } from "react";
-import { View } from "react-native";
 import { Text } from "../../../components/typography/textComponent";
 import { Spacer } from "../../../components/spacer/spacerComponent";
+import { ActivityIndicator, Colors } from "react-native-paper";
 
 import home_bg from "../../../../assets/home_bg.jpg";
-import { BGImage } from "../component/account.style";
 
 import { AuthContext } from "../../../services/authentication/auth.context";
 import {
+  BGImage,
   LoginInput,
-  AccountContainer,
   AuthButton,
+  ErrorContainer,
 } from "../component/account.style";
 
-export const LoginScreen = () => {
+export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { onLogin, error } = useContext(AuthContext);
-
-  const submitHandler = () => onLogin(email, password);
+  const { onLogin, error, isLoading } = useContext(AuthContext);
 
   return (
     <BGImage source={home_bg}>
       <Text>Welcome back!</Text>
-      <Spacer size="large" />
+      {error && (
+        <ErrorContainer>
+          <Text variant="error">{error}</Text>
+        </ErrorContainer>
+      )}
 
+      <Spacer size="large" />
       <LoginInput
         label="Email"
         value={email}
@@ -37,17 +40,30 @@ export const LoginScreen = () => {
       <Spacer size="medium" />
       <LoginInput
         label="Password"
+        value={password}
         onChangeText={(text) => setPassword(text)}
         textContentType="password"
         secureTextEntry
         autoCapitalize="none"
-        secure
       />
       <Spacer size="large" />
-      <AuthButton icon="lock-open" mode="contained" onPress={submitHandler}>
-        Log in
-      </AuthButton>
-      {error.length && <Text variant="error">{error}</Text>}
+      {!isLoading ? (
+        <>
+          <AuthButton
+            icon="lock-open"
+            mode="contained"
+            onPress={() => onLogin(email, password)}
+          >
+            Log in
+          </AuthButton>
+          <Spacer size="medium" />
+          <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+            Back
+          </AuthButton>
+        </>
+      ) : (
+        <ActivityIndicator animating="true" color={Colors.blue300} />
+      )}
     </BGImage>
   );
 };

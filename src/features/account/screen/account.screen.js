@@ -1,6 +1,6 @@
 import React from "react";
 
-import pancake from "../../../../assets/pancake.jpg";
+import home_bg from "../../../../assets/home_bg.jpg";
 
 import { Spacer } from "../../../components/spacer/spacerComponent";
 import {
@@ -8,12 +8,14 @@ import {
   BGCover,
   AccountContainer,
   AuthButton,
+  Title,
 } from "../component/account.style";
 
 export const AccountScreen = ({ navigation }) => {
   return (
-    <BGImage source={pancake}>
+    <BGImage source={home_bg}>
       <BGCover />
+      <Title>Pick Meal Up</Title>
       <AccountContainer>
         <AuthButton
           icon="lock-open"
@@ -24,7 +26,7 @@ export const AccountScreen = ({ navigation }) => {
         </AuthButton>
         <Spacer size="large" />
         <AuthButton
-          icon="lock-open"
+          icon="mail"
           mode="contained"
           onPress={() => navigation.navigate("register")}
         >
