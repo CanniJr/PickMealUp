@@ -1,15 +1,36 @@
 import React from "react";
-import { Text } from "../../../components/typography/textComponent";
-import home_bg from "../../../../assets/home_bg.jpg";
 
-import { BGContainer, BGImage } from "./account.style";
+import pancake from "../../../../assets/pancake.jpg";
 
-export const AccountScreen = () => {
+import { Spacer } from "../../../components/spacer/spacerComponent";
+import {
+  BGImage,
+  BGCover,
+  AccountContainer,
+  AuthButton,
+} from "../component/account.style";
+
+export const AccountScreen = ({ navigation }) => {
   return (
-    <BGContainer>
-      <BGImage source={home_bg}>
-        <Text>AccountScreen</Text>
-      </BGImage>
-    </BGContainer>
+    <BGImage source={pancake}>
+      <BGCover />
+      <AccountContainer>
+        <AuthButton
+          icon="lock-open"
+          mode="contained"
+          onPress={() => navigation.navigate("login")}
+        >
+          Login
+        </AuthButton>
+        <Spacer size="large" />
+        <AuthButton
+          icon="lock-open"
+          mode="contained"
+          onPress={() => navigation.navigate("register")}
+        >
+          Register
+        </AuthButton>
+      </AccountContainer>
+    </BGImage>
   );
 };

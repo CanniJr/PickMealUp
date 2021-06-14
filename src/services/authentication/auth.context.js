@@ -18,7 +18,7 @@ export const AuthContextProvider = ({ children }) => {
         setIsAuthenticated(true);
       })
       .catch((e) => {
-        setError(e);
+        setError(e.toString());
         setIsLoading(false);
       });
   };
@@ -29,7 +29,7 @@ export const AuthContextProvider = ({ children }) => {
         user,
         error,
         isLoading,
-        isAuthenticated,
+        isAuthenticated: !!user,
         onLogin,
       }}
     >
