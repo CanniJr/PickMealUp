@@ -11,7 +11,7 @@ import {
   AuthButton,
   Title,
   AnimationWrapper,
-} from "../component/account.style";
+} from "../components/account.style";
 
 export const AccountScreen = ({ navigation }) => {
   return (

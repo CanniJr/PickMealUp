@@ -12,7 +12,7 @@ import {
   AuthButton,
   ErrorContainer,
   Title,
-} from "../component/account.style";
+} from "../components/account.style";
 
 export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");

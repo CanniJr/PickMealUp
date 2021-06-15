@@ -11,7 +11,7 @@ import {
   LoginInput,
   AuthButton,
   ErrorContainer,
-} from "../component/account.style";
+} from "../components/account.style";
 
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
