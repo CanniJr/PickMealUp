@@ -9,5 +9,8 @@ npm-debug.*
 *.orig.*
 web-build/
 
+#lottie
+.env
+
 # macOS
 .DS_Store

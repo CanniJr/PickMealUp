@@ -30,7 +30,7 @@ export const LoginScreen = ({ navigation }) => {
 
       <Spacer size="large" />
       <LoginInput
-        label="Email"
+        label="E-mail"
         value={email}
         textContentType="emailAddress"
         keyboardType="email-address"
