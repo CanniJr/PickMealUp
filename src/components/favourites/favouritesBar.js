@@ -45,5 +45,6 @@ export const FavouritesBar = ({ favourites, navigation }) => {
 };
 
 const FavouritesWrapper = styled.View`
-  padding: 5px;
+  margin: ${(props) => props.theme.space[2]};
+  align-items: center;
 `;

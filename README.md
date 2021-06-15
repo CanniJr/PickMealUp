@@ -19,3 +19,4 @@ The plan is to connect to Google maps API and make suggestions based of the API 
     ∙ React Navigation stack
     ∙ Camelize (To transform data received from json with an underscore (ex: this_data) into camel-cased (ex: thisData) and)
     ∙ Google Firebase for user authentication
+    ∙ Lottie React Native (renders After Effect animations)

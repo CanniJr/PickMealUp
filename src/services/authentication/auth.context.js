@@ -23,6 +23,8 @@ export const AuthContextProvider = ({ children }) => {
     userLogin(email, password)
       .then((u) => {
         setUser(u);
+        setError(null);
+
         setIsLoading(false);
       })
       .catch((e) => {
@@ -42,6 +44,7 @@ export const AuthContextProvider = ({ children }) => {
       .then((u) => {
         setUser(u);
         setIsLoading(false);
+        setError(null);
       })
       .catch((e) => {
         setError(e.toString());
@@ -51,6 +54,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const onLogout = () => {
     setUser(null);
+    setError(null);
     firebase.auth().signOut();
   };
 
@@ -63,6 +67,7 @@ export const AuthContextProvider = ({ children }) => {
         isAuthenticated: !!user,
         onLogin,
         onRegister,
+        onLogout,
       }}
     >
       {children}
