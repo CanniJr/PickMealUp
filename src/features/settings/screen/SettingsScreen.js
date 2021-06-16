@@ -1,14 +1,45 @@
 import React, { useContext } from "react";
-import { Text, Button } from "react-native";
+import styled from "styled-components/native";
+import { List, Avatar } from "react-native-paper";
+import { Text } from "../../../components/typography/textComponent";
 import { SafeArea } from "../../../components/utility/safeArea.component";
+import { Spacer } from "../../../components/spacer/spacerComponent";
 import { AuthContext } from "../../../services/authentication/auth.context";
 
-export const SettingsScreen = () => {
-  const { onLogout } = useContext(AuthContext);
+export const SettingsScreen = ({ navigation }) => {
+  const { onLogout, user } = useContext(AuthContext);
+  console.log(user);
   return (
     <SafeArea>
-      <Text>Settings</Text>
-      <Button title="Log out" onPress={() => onLogout()} />
+      <AvatarWrapper>
+        <Avatar.Icon icon="account" size={100} backgroundColor="turquoise" />
+        <Spacer position="top" size="medium" />
+        <Text>{user.email}</Text>
+      </AvatarWrapper>
+      <List.Section>
+        <SettingsList
+          title="Favourites"
+          description="View your favourites"
+          left={(props) => <List.Icon {...props} color="black" icon="star" />}
+          onPress={() => navigation.navigate("Favourites")}
+        />
+        <SettingsList
+          title="Logout"
+          left={(props) => <List.Icon {...props} color="black" icon="door" />}
+          onPress={onLogout}
+        />
+      </List.Section>
     </SafeArea>
   );
 };
+
+// Styled components
+
+const SettingsList = styled(List.Item)`
+  padding: ${(props) => props.theme.space[3]};
+`;
+
+const AvatarWrapper = styled.View`
+  align-items: center;
+  margin: ${(props) => props.theme.space[3]};
+`;
