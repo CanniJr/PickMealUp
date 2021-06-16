@@ -22,9 +22,9 @@ export const Favourite = ({ restaurant }) => {
       }
     >
       <AntDesign
-        name={isFavorite ? "heart" : "hearto"}
+        name={isFavorite ? "star" : "staro"}
         size={25}
-        color={isFavorite ? "red" : "white"}
+        color={isFavorite ? "yellow" : "white"}
       />
     </FavouriteButton>
   );
