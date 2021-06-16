@@ -8,7 +8,6 @@ import { AuthContext } from "../../../services/authentication/auth.context";
 
 export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthContext);
-  console.log(user);
   return (
     <SafeArea>
       <AvatarWrapper>

@@ -1,5 +1,6 @@
 import React from "react";
 import LottieView from "lottie-react-native";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 import home_bg from "../../../../assets/home_bg.jpg";
 
@@ -27,7 +28,9 @@ export const AccountScreen = ({ navigation }) => {
           //
         />
       </AnimationWrapper>
-      <Title>Pick Meal Up</Title>
+      <FadeInView>
+        <Title>Pick Meal Up</Title>
+      </FadeInView>
       <AccountContainer>
         <AuthButton
           icon="lock-open"
