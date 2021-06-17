@@ -2,6 +2,8 @@
 
 PickMealUp is a mobile app to search for restaurants in an users selected area, and make purchases towards meals for to-go options.
 
+![alt-text](assets/pickmealup.gif)
+
 ∙ Deployment
 
 ∙ Plans
