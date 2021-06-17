@@ -2,13 +2,17 @@
 
 PickMealUp is a mobile app to search for restaurants in an users selected area, and make purchases towards meals for to-go options.
 
-∙ Deployment
+#### Deployment 
+    The app is currently publish through Expo on [Pick Meal Up](exp://exp.host/@cj20/PickMealUp) which can be accessed using an Expo app on your mobile devices, or you can scan the QR code in [this link](https://expo.io/@cj20/PickMealUp)
 
-∙ Plans
-Places information are currently in JSON format in the location folder as mock.  
-The plan is to connect to Google maps API and make suggestions based of the API and to display information on the UI.
 
-## Created using React-Native and React Context to manage state. The libraries will be listed here as the development goes.
+
+
+#### Plans
+    Places information are currently in JSON format in the location folder as mock.  
+    The plan is to connect to Google maps API and make suggestions based of the API and to display information on the UI.
+
+#### Created using React-Native and React Context to manage state. The libraries will be listed here as the development goes.
 
     ∙ React-Native-Paper
     ∙ React-Native-SVG
