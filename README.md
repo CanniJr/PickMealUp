@@ -28,3 +28,4 @@ PickMealUp is a mobile app to search for restaurants in an users selected area, 
     ∙ Camelize (To transform data received from json with an underscore (ex: this_data) into camel-cased (ex: thisData) and)
     ∙ Google Firebase for user authentication
     ∙ Lottie React Native (renders After Effect animations)
+    ∙ Expo Camera
