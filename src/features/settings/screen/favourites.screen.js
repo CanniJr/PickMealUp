@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { Text } from "../../../components/typography/textComponent";
 import styled from "styled-components/native";
 import { FlatList, TouchableOpacity } from "react-native";
-import { Spacer } from "../../../components/spacer/spacerComponent";
-import RestaurantInfoCard from "../../restaurants/components/RestaurantInfoCard";
+import { Text } from "../../../components/typography/text.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import RestaurantInfoCard from "../../restaurants/components/restaurant.info.card";
 
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 

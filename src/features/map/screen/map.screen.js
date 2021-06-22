@@ -3,8 +3,8 @@ import MapView from "react-native-maps";
 import styled from "styled-components";
 import { LocationContext } from "../../../services/location/location.context";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
-import { MapCallout } from "../components/MapCallout";
-import { MapSearch } from "../components/MapSearch";
+import { MapCallout } from "../components/map.callout";
+import { MapSearch } from "../components/map.search";
 
 export const MapScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);

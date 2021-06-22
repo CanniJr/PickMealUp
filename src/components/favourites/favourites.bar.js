@@ -2,11 +2,11 @@ import React from "react";
 import { ScrollView, TouchableOpacity } from "react-native";
 // import LinearGradient from "react-native-linear-gradient";
 // import ScrollView from "rn-faded-scrollview";
-import { Spacer } from "../spacer/spacerComponent";
+import { Spacer } from "../spacer/spacer.component";
 import styled from "styled-components/native";
-import { Text } from "../typography/textComponent";
+import { Text } from "../typography/text.component";
 
-import { CompactRestaurantInfo } from "../restaurant/compactRestaurantInfo";
+import { CompactRestaurantInfo } from "../restaurant/compact.restaurant.info";
 
 export const FavouritesBar = ({ favourites, navigation }) => {
   if (!favourites.length) {

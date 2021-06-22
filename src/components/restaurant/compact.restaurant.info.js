@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 import WebView from "react-native-webview";
 import { Platform } from "react-native";
 
-import { Text } from "../typography/textComponent";
+import { Text } from "../typography/text.component";
 
 const isAndroid = Platform.OS === "android";
 export const CompactRestaurantInfo = ({ restaurant, isMap }) => {

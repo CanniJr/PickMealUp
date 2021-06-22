@@ -6,12 +6,12 @@ import { FavouritesContext } from "../../../services/favourites/favourites.conte
 import { FadeInView } from "../../../components/animations/fade.animation";
 import { FlatList, TouchableOpacity } from "react-native";
 import { ActivityIndicator, Colors } from "react-native-paper";
-import RestaurantInfoCard from "../components/RestaurantInfoCard";
-import { SafeArea } from "../../../components/utility/safeArea.component";
-import { FavouritesBar } from "../../../components/favourites/favouritesBar";
+import RestaurantInfoCard from "../components/restaurant.info.card";
+import { SafeArea } from "../../../components/utility/safe.area.component";
+import { FavouritesBar } from "../../../components/favourites/favourites.bar";
 
-import { Spacer } from "../../../components/spacer/spacerComponent";
-import { RestaurantSearch } from "../components/RestaurantSearch";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { RestaurantSearch } from "../components/restaurant.search";
 
 const RestaurantsScreen = ({ navigation }) => {
   const { restaurants, isLoading } = useContext(RestaurantsContext);

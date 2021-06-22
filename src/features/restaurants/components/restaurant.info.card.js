@@ -1,8 +1,8 @@
 import React from "react";
 import { SvgXml } from "react-native-svg";
-import { Text } from "../../../components/typography/textComponent";
-import { Spacer } from "../../../components/spacer/spacerComponent";
-import { Favourite } from "../../../components/favourites/favouritesComponent";
+import { Text } from "../../../components/typography/text.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { Favourite } from "../../../components/favourites/favourites.component";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 
@@ -15,7 +15,7 @@ import {
   SectionEnd,
   Ratings,
   Icon,
-} from "./RestaurantInfoCard.style";
+} from "./restaurant.info.card-style";
 
 const RestaurantInfoCard = ({ restaurant }) => {
   //default values for testing

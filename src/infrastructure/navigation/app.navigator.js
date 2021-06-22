@@ -2,7 +2,7 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import RestaurantsNavigator from "./restaurants.navigator";
-import { MapScreen } from "../../features/map/screen/MapScreen";
+import { MapScreen } from "../../features/map/screen/map.screen";
 import { SettingsNavigator } from "./settings.navigator";
 import { RestaurantsContextProvider } from "../../services/restaurants/restaurants.context";
 import { LocationContextProvider } from "../../services/location/location.context";

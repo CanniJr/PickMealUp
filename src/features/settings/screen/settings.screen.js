@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import styled from "styled-components/native";
 import { List, Avatar } from "react-native-paper";
-import { Text } from "../../../components/typography/textComponent";
-import { SafeArea } from "../../../components/utility/safeArea.component";
-import { Spacer } from "../../../components/spacer/spacerComponent";
+import { Text } from "../../../components/typography/text.component";
+import { SafeArea } from "../../../components/utility/safe.area.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import { AuthContext } from "../../../services/authentication/auth.context";
 
 export const SettingsScreen = ({ navigation }) => {

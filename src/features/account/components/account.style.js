@@ -1,7 +1,7 @@
 import { colors } from "../../../infrastructure/theme/colors";
 import { Button, TextInput } from "react-native-paper";
 import styled from "styled-components/native";
-import { Text } from "../../../components/typography/textComponent";
+import { Text } from "../../../components/typography/text.component";
 
 export const BGImage = styled.ImageBackground`
   flex: 1;

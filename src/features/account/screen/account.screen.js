@@ -4,7 +4,7 @@ import { FadeInView } from "../../../components/animations/fade.animation";
 
 import home_bg from "../../../../assets/home_bg.jpg";
 
-import { Spacer } from "../../../components/spacer/spacerComponent";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import {
   BGImage,
   BGCover,

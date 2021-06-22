@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-import { Text } from "../../../components/typography/textComponent";
-import { Spacer } from "../../../components/spacer/spacerComponent";
+import { Text } from "../../../components/typography/text.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
 import home_bg from "../../../../assets/home_bg.jpg";
