@@ -45,7 +45,7 @@ const RestaurantInfoCard = ({ restaurant }) => {
             {ratingArray.map(
               (
                 _,
-                i // using the index as part of the key to make a unique key for each component.
+                i // using the index as part of the key.
               ) => (
                 <SvgXml
                   key={`star-${placeId}-${i}`}
