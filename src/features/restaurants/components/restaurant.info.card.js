@@ -20,13 +20,13 @@ import {
 const RestaurantInfoCard = ({ restaurant }) => {
   //default values for testing
   const {
-    name = "Some Restaurant",
+    name,
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
       "https://cdn-cajkg.nitrocdn.com/ZJzLelPaQQUYcIzKvveTxTAioLgFVwpU/assets/static/optimized/rev-cd29551/wp-content/uploads/2019/04/mae-mu-pancakes-819x1024.jpg.webp",
     ],
-    vicinity = "999 Somewhere Street",
-    rating = 4,
+    vicinity,
+    rating,
     isOpen = true,
     isClosedTemporarily = true,
     placeId,
