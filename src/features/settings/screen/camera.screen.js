@@ -5,12 +5,13 @@ import styled from "styled-components/native";
 
 // export const CameraScreen = () => null;
 export const CameraScreen = () => {
+  const [hasPermission, setHasPermission] = useState("");
   const cameraRef = useRef();
   return (
     <ProfileCamera
       ref={(camera) => (cameraRef.current = camera)}
       type={Camera.Constants.Type.front}
-    ></ProfileCamera>
+    />
   );
 };
 
