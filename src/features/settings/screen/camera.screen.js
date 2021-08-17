@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { Text } from "../../../components/typography/text.component";
 import { Camera } from "expo-camera";
 import styled from "styled-components/native";
 
@@ -7,6 +8,21 @@ import styled from "styled-components/native";
 export const CameraScreen = () => {
   const [hasPermission, setHasPermission] = useState("");
   const cameraRef = useRef();
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestPermissionsAsync();
+      setHasPermission(status === "granted");
+    })();
+  }, []);
+
+  if (hasPermission === null) {
+    return <View />;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+
   return (
     <ProfileCamera
       ref={(camera) => (cameraRef.current = camera)}

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { List, Avatar } from "react-native-paper";
 import { Text } from "../../../components/typography/text.component";
@@ -8,12 +9,15 @@ import { AuthContext } from "../../../services/authentication/auth.context";
 
 export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthContext);
+
   return (
     <SafeArea>
       <AvatarWrapper>
-        <Avatar.Icon icon="account" size={100} backgroundColor="turquoise" />
-        <Spacer position="top" size="medium" />
-        <Text>{user.email}</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
+          <Avatar.Icon icon="account" size={100} backgroundColor="turquoise" />
+          <Spacer position="top" size="medium" />
+          <Text>{user.email}</Text>
+        </TouchableOpacity>
       </AvatarWrapper>
       <List.Section>
         <SettingsList
