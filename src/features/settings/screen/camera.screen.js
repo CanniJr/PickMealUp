@@ -9,6 +9,14 @@ export const CameraScreen = () => {
   const [hasPermission, setHasPermission] = useState("");
   const cameraRef = useRef();
 
+  // camera action are outisde of React Native, so use await
+  const snap = async () => {
+    if (cameraRef) {
+      const photo = await cameraRef.curent.takePictureAsync();
+      console.log(photo);
+    }
+  };
+
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestPermissionsAsync();
@@ -24,10 +32,12 @@ export const CameraScreen = () => {
   }
 
   return (
-    <ProfileCamera
-      ref={(camera) => (cameraRef.current = camera)}
-      type={Camera.Constants.Type.front}
-    />
+    <TouchableOpacity onPress={snap}>
+      <ProfileCamera
+        ref={(camera) => (cameraRef.current = camera)}
+        type={Camera.Constants.Type.front}
+      />
+    </TouchableOpacity>
   );
 };
 
