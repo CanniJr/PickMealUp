@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { List, Avatar } from "react-native-paper";
@@ -6,9 +6,18 @@ import { Text } from "../../../components/typography/text.component";
 import { SafeArea } from "../../../components/utility/safe.area.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AuthContext } from "../../../services/authentication/auth.context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthContext);
+  const [photo, setPhoto] = useState(null);
+
+  const getProfilepicture = async () => {
+    const photoUri = await AsyncStorage.getItem(` ${user.uid}-photo`);
+  };
+  useEffect(() => {
+    getProfilepicture();
+  }, [user]);
 
   return (
     <SafeArea>
