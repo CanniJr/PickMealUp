@@ -14,6 +14,7 @@ export const SettingsScreen = ({ navigation }) => {
 
   const getProfilepicture = async () => {
     const photoUri = await AsyncStorage.getItem(` ${user.uid}-photo`);
+    setPhoto(photoUri);
   };
   useEffect(() => {
     getProfilepicture();
@@ -23,7 +24,13 @@ export const SettingsScreen = ({ navigation }) => {
     <SafeArea>
       <AvatarWrapper>
         <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
-          <Avatar.Icon icon="account" size={100} backgroundColor="turquoise" />
+          {!photo && (
+            <Avatar.Icon icon="human" size={180} backgroundColor="turquoise" />
+          )}
+          {!photo && (
+            <Avatar.Icon source size={180} backgroundColor="turquoise" />
+          )}
+
           <Spacer position="top" size="medium" />
           <Text>{user.email}</Text>
         </TouchableOpacity>
