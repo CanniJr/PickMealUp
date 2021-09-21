@@ -1,5 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { TouchableOpacity } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
+
 import styled from "styled-components/native";
 import { List, Avatar } from "react-native-paper";
 import { Text } from "../../../components/typography/text.component";
@@ -12,12 +14,14 @@ export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthContext);
   const [photo, setPhoto] = useState(null);
 
-  const getProfilepicture = async () => {
-    const photoUri = await AsyncStorage.getItem(` ${user.uid}-photo`);
+  const getProfilepicture = async (currentUser) => {
+    const photoUri = await AsyncStorage.getItem(` ${currentUser.uid}-photo`);
     setPhoto(photoUri);
   };
-  useEffect(() => {
-    getProfilepicture();
+
+  //similar to useEffect, but triggers when the screen (settings screen) is back into foucs
+  useFocusEffect(() => {
+    getProfilepicture(user);
   }, [user]);
 
   return (
@@ -27,8 +31,12 @@ export const SettingsScreen = ({ navigation }) => {
           {!photo && (
             <Avatar.Icon icon="human" size={180} backgroundColor="turquoise" />
           )}
-          {!photo && (
-            <Avatar.Icon source size={180} backgroundColor="turquoise" />
+          {photo && (
+            <Avatar.Icon
+              source={{ uri: photo }}
+              size={180}
+              backgroundColor="turquoise"
+            />
           )}
 
           <Spacer position="top" size="medium" />

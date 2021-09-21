@@ -8,7 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import styled from "styled-components/native";
 
 // export const CameraScreen = () => null;
-export const CameraScreen = () => {
+export const CameraScreen = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState("");
   const cameraRef = useRef();
   const { user } = useContext(AuthContext);
@@ -19,6 +19,7 @@ export const CameraScreen = () => {
       const photo = await cameraRef.curent.takePictureAsync();
       console.log(photo);
       AsyncStorage.setItem(` ${user.uid}-photo`, photo.uri);
+      navigation.goBack();
     }
   };
 
