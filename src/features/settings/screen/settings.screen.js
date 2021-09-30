@@ -22,7 +22,7 @@ export const SettingsScreen = ({ navigation }) => {
   //similar to useEffect, but triggers when the screen (settings screen) is back into foucs
   useFocusEffect(() => {
     getProfilepicture(user);
-  }, [user]);
+  });
 
   return (
     <SafeArea>
