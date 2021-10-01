@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import { TouchableOpacity } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 
@@ -15,14 +15,16 @@ export const SettingsScreen = ({ navigation }) => {
   const [photo, setPhoto] = useState(null);
 
   const getProfilepicture = async (currentUser) => {
-    const photoUri = await AsyncStorage.getItem(` ${currentUser.uid}-photo`);
+    const photoUri = await AsyncStorage.getItem(`${currentUser.uid}-photo`);
     setPhoto(photoUri);
   };
 
   //similar to useEffect, but triggers when the screen (settings screen) is back into foucs
-  useFocusEffect(() => {
-    getProfilepicture(user);
-  });
+  useFocusEffect(
+    useCallback(() => {
+      getProfilepicture(user);
+    }, [user])
+  );
 
   return (
     <SafeArea>
@@ -32,17 +34,18 @@ export const SettingsScreen = ({ navigation }) => {
             <Avatar.Icon icon="human" size={180} backgroundColor="turquoise" />
           )}
           {photo && (
-            <Avatar.Icon
+            <Avatar.Image
               source={{ uri: photo }}
               size={180}
               backgroundColor="turquoise"
             />
           )}
-
-          <Spacer position="top" size="medium" />
-          <Text>{user.email}</Text>
         </TouchableOpacity>
+        <Spacer position="top" size="large">
+          <Text variant="label">{user.email}</Text>
+        </Spacer>
       </AvatarWrapper>
+
       <List.Section>
         <SettingsList
           title="Favourites"

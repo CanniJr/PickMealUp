@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
-import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import { Text } from "../../../components/typography/text.component";
 import { Camera } from "expo-camera";
 
@@ -16,9 +16,9 @@ export const CameraScreen = ({ navigation }) => {
   // camera action are outisde of React Native, so use await
   const snap = async () => {
     if (cameraRef) {
-      const photo = await cameraRef.curent.takePictureAsync();
+      const photo = await cameraRef.current.takePictureAsync();
       console.log(photo);
-      AsyncStorage.setItem(` ${user.uid}-photo`, photo.uri);
+      AsyncStorage.setItem(`${user.uid}-photo`, photo.uri);
       navigation.goBack();
     }
   };
@@ -38,16 +38,25 @@ export const CameraScreen = ({ navigation }) => {
   }
 
   return (
-    <TouchableOpacity onPress={snap}>
-      <ProfileCamera
-        ref={(camera) => (cameraRef.current = camera)}
-        type={Camera.Constants.Type.front}
-      />
-    </TouchableOpacity>
+    <ProfileCamera
+      ref={(camera) => (cameraRef.current = camera)}
+      type={Camera.Constants.Type.front}
+      ratio={"16:9"}
+    >
+      <TouchableOpacity onPress={snap}>
+        <InnerSnap />
+      </TouchableOpacity>
+    </ProfileCamera>
   );
 };
 
 const ProfileCamera = styled(Camera)`
   width: 100%;
   height: 100%;
+`;
+
+const InnerSnap = styled.View`
+  width: 100%;
+  height: 100%;
+  z-index: 999;
 `;
