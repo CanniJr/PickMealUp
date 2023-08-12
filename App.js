@@ -10,6 +10,7 @@ import {
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import * as firebase from "firebase";
+import { LogBox } from "react-native";
 
 //Firebase configuration
 const firebaseConfig = {
@@ -25,6 +26,11 @@ const firebaseConfig = {
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
+
+LogBox.ignoreLogs([
+  "AsyncStorage has been extracted from react-native core and will be removed in a future release",
+]);
+
 export default function App() {
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
