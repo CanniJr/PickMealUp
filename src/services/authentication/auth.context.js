@@ -28,8 +28,6 @@ export const AuthContextProvider = ({ children }) => {
     userLogin(auth, email, password)
       .then((u) => {
         setUser(u);
-        setError(null);
-
         setIsLoading(false);
       })
       .catch((e) => {
