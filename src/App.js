@@ -1,5 +1,5 @@
 import { StatusBar as ExpoStatsBar } from "expo-status-bar";
-import * as React from "react";
+import React from "react";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./infrastructure/theme";
 import { AuthContextProvider } from "./services/authentication/auth.context";
@@ -9,7 +9,7 @@ import {
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
-import * as firebase from "firebase";
+import { initializeApp } from "firebase/app";
 import { LogBox } from "react-native";
 
 //Firebase configuration
@@ -23,9 +23,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase and make sure that firebase app only initiated once.
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+initializeApp(firebaseConfig);
 
 LogBox.ignoreLogs([
   "AsyncStorage has been extracted from react-native core and will be removed in a future release",

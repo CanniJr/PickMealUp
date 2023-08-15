@@ -9,7 +9,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 const Stack = createStackNavigator();
 
 export const AccountNavigator = () => (
-  <Stack.Navigator headerMode="none">
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="main" component={AccountScreen} />
     <Stack.Screen name="login" component={LoginScreen} />
     <Stack.Screen name="register" component={RegisterScreen} />
