@@ -1,9 +1,9 @@
 import { StatusBar as ExpoStatsBar } from "expo-status-bar";
-import React from "react";
+import * as React from "react";
 import { ThemeProvider } from "styled-components/native";
-import { theme } from "./src/infrastructure/theme";
-import { AuthContextProvider } from "./src/services/authentication/auth.context";
-import { Navigation } from "./src/infrastructure/navigation";
+import { theme } from "./infrastructure/theme";
+import { AuthContextProvider } from "./services/authentication/auth.context";
+import { Navigation } from "./infrastructure/navigation";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
