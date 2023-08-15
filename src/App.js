@@ -1,15 +1,16 @@
 import { StatusBar as ExpoStatsBar } from "expo-status-bar";
 import React from "react";
 import { ThemeProvider } from "styled-components/native";
-import { theme } from "./src/infrastructure/theme";
-import { AuthContextProvider } from "./src/services/authentication/auth.context";
-import { Navigation } from "./src/infrastructure/navigation";
+import { theme } from "./infrastructure/theme";
+import { AuthContextProvider } from "./services/authentication/auth.context";
+import { Navigation } from "./infrastructure/navigation";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
-import * as firebase from "firebase";
+import { initializeApp } from "firebase/app";
+import { LogBox } from "react-native";
 
 //Firebase configuration
 const firebaseConfig = {
@@ -22,9 +23,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase and make sure that firebase app only initiated once.
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+initializeApp(firebaseConfig);
+
+LogBox.ignoreLogs([
+  "AsyncStorage has been extracted from react-native core and will be removed in a future release",
+]);
+
 export default function App() {
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
